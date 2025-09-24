@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>Hotel SQLuxe</title>
+</head>
+<body>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.JPG') }}" alt="Hotel SQLuxe">
+            <span>Hotel SQLUXE</span>
+        </div>
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <nav class="nav-links">
+        <a href="/">Inicio</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/habitaciones">Habitaciones</a>
+        <a href="/contacto">Contacto</a>
+    </nav>
+    </header>
+    <br>
+    <button class="reserve-button">Reserva</button>
+    <br>
+    <main>
+        <section class="hero-section">
+            <img src="{{ url_for('static', filename='images/lobbyImage.png') }}" alt="lobby">
+        </section>
+        <section class="icons-section">
+            <div>
+                <img src="{{ url_for('static', filename='images/bebida.png') }}" alt="icons">
+                <img src="{{ url_for('static', filename='images/servspa.png') }}" alt="icons">
+                <img src="{{ url_for('static', filename='images/transporte.png') }}" alt="icons">
+                <img src="{{ url_for('static', filename='images/wifigratis.png') }}" alt="icons">
+            </div>
+        </section>
+        <section class="why-choose-us">
+            <h1>¿Por qué <span>elegirnos?</span></h1>
+            <p>Porque cada detalle está pensado para ti. En SQLUXE HOTEL, combinamos lujo, comodidad y un servicio excepcional para hacer de tu estancia una experiencia inolvidable. Elígenos y vive momentos únicos.</p>
+            <div class="reasons">
+                <div class="reason">
+                    <div class="number">1</div>
+                    <h2>Vive el lujo y la comodidad que mereces</h2>
+                    <p>Disfruta de instalaciones de primer nivel y un servicio dedicado a superar tus expectativas. Haz de tu estancia un verdadero placer.</p>
+                </div>
+                <div class="reason">
+                    <div class="number">2</div>
+                    <h2>Escapadas perfectas, momentos inolvidables</h2>
+                    <p>Encuentra el equilibrio ideal entre descanso y experiencias únicas en cada rincón de nuestro hotel. Porque cada momento cuenta.</p>
+                </div>
+                <div class="reason">
+                    <div class="number">3</div>
+                    <h2>Tu descanso ideal, a un clic de distancia</h2>
+                    <p>Con solo una reserva, descubre un mundo de confort y tranquilidad diseñado para ofrecerte la mejor experiencia posible.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="Habitaciones">
+                <h1>Nuestras <span>Habitaciones</span></h1></div>
+            <br>
+            <div class="card-container">
+            <div class="card">
+                <div class="face front">
+                    <img src="{{ url_for('static', filename='images/suitep.jpeg') }}" alt="">
+                    <h3>Suite</h3>
+                </div>
+                <div class="face back"> 
+                    <h3>Suite</h3>
+                    <p>Una suite es un espacio elegante y acogedor que combina dormitorio, sala de estar y detalles de lujo, diseñada para brindar confort y estilo en cada rincón.</p>
+                    <div class="link">
+                        <a href="/habitaciones/suite">Detalles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="face front">
+                    <img src="{{ url_for('static', filename='images/parejap.jpeg') }}" alt="">
+                    <h3>Pareja</h3>
+                </div>
+                <div class="face back"> 
+                    <h3>Pareja</h3>
+                    <p>Habitación acogedora y romántica, con cama amplia, iluminación cálida y detalles elegantes, ideal para una escapada especial en pareja.</p>
+                    <div class="link">
+                        <a href="/habitaciones/pareja">Detalles</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="face front">
+                    <img src="{{ url_for('static', filename='images/indivp.JPG') }}" alt="">
+                    <h3>Individual</h3>
+                </div>
+                <div class="face back"> 
+                    <h3>Individual</h3>
+                    <p>Habitación cómoda y funcional, con cama individual, diseño elegante y servicios esenciales, ideal para viajeros que buscan privacidad y tranquilidad.</p>
+                    <div class="link">
+                        <a href="/habitaciones/individual">Detalles</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="face front">
+                    <img src="{{ url_for('static', filename='images/familiarp.jpeg') }}" alt="">
+                    <h3>Familiar</h3>
+                </div>
+                <div class="face back"> 
+                    <h3>Familiar</h3>
+                    <p>Habitación amplia y cómoda, diseñada para el descanso familiar, con camas espaciosas y todos los servicios para una estancia agradable y funcional.</p>
+                    <div class="link">
+                        <a href="/habitaciones/familiar">Detalles</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="face front">
+                    <img src="{{ url_for('static', filename='images/doblep.jpeg') }}" alt="">
+                    <h3>Doble</h3>
+                </div>
+                <div class="face back"> 
+                    <h3>Doble</h3>
+                    <p>Habitación cómoda y funcional, con dos camas amplias, diseño elegante y servicios esenciales, perfecta para compartir sin renunciar a la privacidad.</p>
+                    <div class="link">
+                        <a href="/habitaciones/doble">Detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <br>
+
+        <div class="about-container">
+            <section class="about-info">
+                <h1>Acerca de Nosotros</h1>
+                <p>
+                    En nuestro hotel, nos dedicamos a ofrecer una experiencia única de confort y calidez. 
+                    Con un enfoque en la atención personalizada y el diseño exclusivo, nuestras instalaciones 
+                    están pensadas para satisfacer las necesidades de nuestros huéspedes más exigentes.
+                </p>
+                <button class="btn-learn-more">Conoce más</button>
+            </section>
+        
+            <!-- Imagen destacada -->
+            <section class="about-image">
+                <img src="{{ url_for('static', filename='images/indiva.jpg') }}" alt="habejemplo">
+            </section>
+        </div>
+        
+        <!-- Adicionales -->
+        <div class="about-features">
+            <div class="feature">
+                <h2>Habitaciones e Interiores</h2>
+                <p>Excelente se encuentran más de 500 Opiniones</p>
+                <img src="{{ url_for('static', filename='images/hab.jpg') }}" alt="interior">
+                <div class="link">
+                    <a href="/habitaciones">Detalles</a>
+                </div>
+            </div>
+            <div class="feature">
+                <h2>Spa</h2>
+                <p>Relájate en un mundo de lujo y tranquilidad.</p>
+                <img src="{{ url_for('static', filename='images/spa.jpg') }}" alt="spa">
+                <div class="link">
+                    <a href="/spa">Detalles</a>
+                </div>
+            </div>
+            <div class="feature">
+                <h2>Lounge Bar</h2>
+                <p>Disfruta de momentos exclusivos de estilo y relajación.</p>
+                <img src="{{ url_for('static', filename='images/lbar.jpg') }}" alt="bar">
+                <div class="link">
+                    <a href="/bar">Detalles</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div class="subscribe-container">
+                <aside class="sidebar">
+                    <ul>
+                        <li>Inicio</li>
+                        <li>Servicios</li>
+                        <li>Nosotros</li>
+                        <li>Habitaciones</li>
+                        <li>Contacto</li>
+                    </ul>
+                    <div class="social-media">
+                        <img src="{{ url_for('static', filename='images/Facebook.png') }}" alt="fb">
+                        <img src="{{ url_for('static', filename='images/Youtube.png') }}" alt="yt">
+                        <img src="{{ url_for('static', filename='images/Whatsapp.png') }}" alt="whats">
+                    </div>
+                </aside>
+        
+                <section class="subscribe-section">
+                    <h1>Suscríbete</h1>
+                    <p>Disfruta de recibir notificaciones de descuentos y promociones especiales en nuestras habitaciones y servicios.</p>
+                    <form method="POST" action="/subscribe">
+                        <input type="email" name="email" placeholder="Ingresa tu correo" required>
+                        <button type="submit">Suscríbeme</button>
+                    </form>
+                </section>
+        
+                <aside class="sidebar right">
+                    <ul>
+                        <div class="link_pf">
+                            <a class="nav-link text-white" href="/preguntasfrecuentes">Preguntas Frecuentes</a>
+                        </div>
+                        <div class="link_html">
+                            <a class="nav-link text-white" href="/reglasdelhotel">Reglas del Hotel</a>
+                        </div>
+                        <div class="link_html">
+                            <a class="nav-link text-white" href="/ubicaciondelhotel">Ubicación</a>
+                        </div>
+                        <a class="nav-link text-white" href="/admin">Admindashboard</a>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
