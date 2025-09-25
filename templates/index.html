@@ -3,227 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='ico_Hotel_Maliche.ico') }}">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/ico_Hotel_Maliche.ico') }}">
     <title>Hotel El Malinche</title>
 </head>
-<body>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <header>
-        <div class="logo-container">
-            <img src="{{ url_for('static', filename='logo_hotel_malinche.png') }}" alt="Hotel El Malinche">
-            <span>Hotel El Malinche</span>
+<body class="font-[Rubik] bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between p-4 bg-[#121212] shadow-md">
+        <div class="flex items-center gap-2">
+            <img src="{{ url_for('static', filename='images/logo_hotel_malinche.png') }}" alt="Hotel El Malinche" class="w-12 h-12">
+            <span class="text-xl text-white font-bold">Hotel El Malinche</span>
         </div>
-        <button class="menu-button" onclick="toggleMenu()">☰</button>
-    <nav class="nav-links">
-        <a href="/">Inicio</a>
-        <a href="/servicios">Servicios</a>
-        <a href="/nosotros">Nosotros</a>
-        <a href="/habitaciones">Habitaciones</a>
-        <a href="/contacto">Contacto</a>
-    </nav>
+        <button class="text-2xl md:hidden" onclick="toggleMenu()">☰</button>
+        <nav class="hidden md:flex items-center gap-6">
+            <a href="/" class="text-white hover:text-[#8B3F41]">Inicio</a>
+            <a href="/servicios" class="text-white hover:text-[#8B3F41]">Servicios</a>
+            <a href="/nosotros" class="text-white hover:text-[#8B3F41]">Nosotros</a>
+            <a href="/habitaciones" class="text-white hover:text-[#8B3F41]">Habitaciones</a>
+            <a href="/contacto" class="text-white hover:text-[#8B3F41]">Contacto</a>
+        <button class="bg-[#8B3F41] hover:bg-[#4E342E] text-white px-6 py-2 rounded-lg shadow-md transition">
+            Reserva
+        </button>
+        </nav>
     </header>
-    <br>
-    <button class="reserve-button">Reserva</button>
-    <br>
-    <main>
-        <section class="hero-section">
-            <img src="{{ url_for('static', filename='recepcion_hotel_malinche.png') }}" alt="lobby">
-        </section>
-        <section class="icons-section">
-            <div>
-                <img src="{{ url_for('static', filename='images/bebida.png') }}" alt="icons">
-                <img src="{{ url_for('static', filename='images/servspa.png') }}" alt="icons">
-                <img src="{{ url_for('static', filename='images/transporte.png') }}" alt="icons">
-                <img src="{{ url_for('static', filename='images/wifigratis.png') }}" alt="icons">
+
+    <!-- Hero -->
+    <section class="w-full">
+        <img src="{{ url_for('static', filename='images/recepcion_hotel_malinche.png') }}" alt="lobby" class="w-full h-[800px] object-cover">
+    </section>
+
+    <!-- Íconos -->
+    <section class="flex justify-center gap-6 my-8">
+        <img src="{{ url_for('static', filename='images/bebidas.png') }}" alt="icon" class="w-16">
+        <img src="{{ url_for('static', filename='images/servspa.png') }}" alt="icon" class="w-16">
+        <img src="{{ url_for('static', filename='images/transporte.png') }}" alt="icon" class="w-16">
+        <img src="{{ url_for('static', filename='images/wifi.png') }}" alt="icon" class="w-16">
+    </section>
+
+    <!-- ¿Por qué elegirnos? -->
+    <section class="text-center px-6 py-12 bg-gray-100">
+        <h1 class="text-3xl font-bold">¿Por qué <span class="text-[#8B3F41]">elegirnos?</span></h1>
+        <p class="max-w-2xl mx-auto mt-4 text-gray-600">
+            Porque cada detalle está pensado para ti. En Hotel El Malinche, combinamos lujo, comodidad y un servicio excepcional.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-10">
+            <div class="bg-white shadow-lg p-6 rounded-xl">
+                <div class="text-4xl font-bold text-[#8B3F41]">1</div>
+                <h2 class="text-xl font-semibold mt-2">Vive el lujo</h2>
+                <p class="text-gray-500">Instalaciones de primer nivel y un servicio dedicado a superar tus expectativas.</p>
             </div>
-        </section>
-        <section class="why-choose-us">
-            <h1>¿Por qué <span>elegirnos?</span></h1>
-            <p>Porque cada detalle está pensado para ti. En Hotel El Malinche, combinamos lujo, comodidad y un servicio excepcional para hacer de tu estancia una experiencia inolvidable. Elígenos y vive momentos únicos.</p>
-            <div class="reasons">
-                <div class="reason">
-                    <div class="number">1</div>
-                    <h2>Vive el lujo y la comodidad que mereces</h2>
-                    <p>Disfruta de instalaciones de primer nivel y un servicio dedicado a superar tus expectativas. Haz de tu estancia un verdadero placer.</p>
-                </div>
-                <div class="reason">
-                    <div class="number">2</div>
-                    <h2>Escapadas perfectas, momentos inolvidables</h2>
-                    <p>Encuentra el equilibrio ideal entre descanso y experiencias únicas en cada rincón de nuestro hotel. Porque cada momento cuenta.</p>
-                </div>
-                <div class="reason">
-                    <div class="number">3</div>
-                    <h2>Tu descanso ideal, a un clic de distancia</h2>
-                    <p>Con solo una reserva, descubre un mundo de confort y tranquilidad diseñado para ofrecerte la mejor experiencia posible.</p>
-                </div>
+            <div class="bg-white shadow-lg p-6 rounded-xl">
+                <div class="text-4xl font-bold text-[#8B3F41]">2</div>
+                <h2 class="text-xl font-semibold mt-2">Momentos inolvidables</h2>
+                <p class="text-gray-500">Encuentra el equilibrio ideal entre descanso y experiencias únicas.</p>
             </div>
-        </section>
-        <section>
-            <div class="Habitaciones">
-                <h1>Nuestras <span>Habitaciones</span></h1></div>
-            <br>
-            <div class="card-container">
-            <div class="card">
-                <div class="face front">
-                    <img src="{{ url_for('static', filename='images/suitep.jpeg') }}" alt="">
-                    <h3>Suite</h3>
-                </div>
-                <div class="face back"> 
-                    <h3>Suite</h3>
-                    <p>Una suite es un espacio elegante y acogedor que combina dormitorio, sala de estar y detalles de lujo, diseñada para brindar confort y estilo en cada rincón.</p>
-                    <div class="link">
-                        <a href="/habitaciones/suite">Detalles</a>
-                    </div>
-                </div>
+            <div class="bg-white shadow-lg p-6 rounded-xl">
+                <div class="text-4xl font-bold text-[#8B3F41]">3</div>
+                <h2 class="text-xl font-semibold mt-2">Tu descanso ideal</h2>
+                <p class="text-gray-500">Con solo una reserva, descubre un mundo de confort y tranquilidad.</p>
             </div>
-            <div class="card">
-                <div class="face front">
-                    <img src="{{ url_for('static', filename='images/parejap.jpeg') }}" alt="">
-                    <h3>Pareja</h3>
-                </div>
-                <div class="face back"> 
-                    <h3>Pareja</h3>
-                    <p>Habitación acogedora y romántica, con cama amplia, iluminación cálida y detalles elegantes, ideal para una escapada especial en pareja.</p>
-                    <div class="link">
-                        <a href="/habitaciones/pareja">Detalles</a>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Habitaciones -->
+    <section class="px-6 py-12">
+        <h1 class="text-center text-3xl font-bold">Nuestras <span class="text-[#8B3F41]">Habitaciones</span></h1>
+        <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6 mt-10">
+            <!-- Card -->
+            <div class="bg-white shadow-md rounded-xl overflow-hidden">
+                <img src="{{ url_for('static', filename='images/suitep.jpeg') }}" alt="Suite" class="h-40 w-full object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">Suite</h3>
+                    <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
+                    <a href="/habitaciones/suite" class="text-[#8B3F41] hover:underline">Detalles</a>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="face front">
-                    <img src="{{ url_for('static', filename='images/indivp.JPG') }}" alt="">
-                    <h3>Individual</h3>
-                </div>
-                <div class="face back"> 
-                    <h3>Individual</h3>
-                    <p>Habitación cómoda y funcional, con cama individual, diseño elegante y servicios esenciales, ideal para viajeros que buscan privacidad y tranquilidad.</p>
-                    <div class="link">
-                        <a href="/habitaciones/individual">Detalles</a>
-                    </div>
-                </div>
-            </div>
+            <!-- Repetir para Pareja, Individual, Familiar, Doble -->
+        </div>
+    </section>
 
-            <div class="card">
-                <div class="face front">
-                    <img src="{{ url_for('static', filename='images/familiarp.jpeg') }}" alt="">
-                    <h3>Familiar</h3>
-                </div>
-                <div class="face back"> 
-                    <h3>Familiar</h3>
-                    <p>Habitación amplia y cómoda, diseñada para el descanso familiar, con camas espaciosas y todos los servicios para una estancia agradable y funcional.</p>
-                    <div class="link">
-                        <a href="/habitaciones/familiar">Detalles</a>
-                    </div>
-                </div>
-            </div>
+    <!-- Acerca de nosotros -->
+    <section class="px-6 py-12 bg-gray-100 flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/2">
+            <h1 class="text-3xl font-bold">Acerca de Nosotros</h1>
+            <p class="mt-4 text-gray-600">
+                En nuestro hotel, nos dedicamos a ofrecer una experiencia única de confort y calidez.
+            </p>
+            <button class="mt-6 bg-[#8B3F41] text-white px-6 py-2 rounded-lg hover:bg-[#4E342E]">Conoce más</button>
+        </div>
+        <div class="md:w-1/2">
+            <img src="{{ url_for('static', filename='images/indiva.jpg') }}" alt="Nosotros" class="rounded-xl shadow-lg">
+        </div>
+    </section>
 
-            <div class="card">
-                <div class="face front">
-                    <img src="{{ url_for('static', filename='images/doblep.jpeg') }}" alt="">
-                    <h3>Doble</h3>
-                </div>
-                <div class="face back"> 
-                    <h3>Doble</h3>
-                    <p>Habitación cómoda y funcional, con dos camas amplias, diseño elegante y servicios esenciales, perfecta para compartir sin renunciar a la privacidad.</p>
-                    <div class="link">
-                        <a href="/habitaciones/doble">Detalles</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-        <br>
+    <!-- Suscripción -->
+    <section class="px-6 py-12 text-center bg-white">
+        <h1 class="text-2xl font-bold">Suscríbete</h1>
+        <p class="text-gray-600 mt-2">Recibe notificaciones de descuentos y promociones.</p>
+        <form method="POST" action="/subscribe" class="mt-4 flex justify-center gap-2">
+            <input type="email" name="email" placeholder="Ingresa tu correo" required
+                   class="border px-4 py-2 rounded-lg w-64 focus:ring focus:ring-blue-300">
+            <button type="submit" class="bg-[#8B3F41] text-white px-6 py-2 rounded-lg hover:bg-[#4E342E]">
+                Suscríbeme
+            </button>
+        </form>
+    </section>
 
-        <div class="about-container">
-            <section class="about-info">
-                <h1>Acerca de Nosotros</h1>
-                <p>
-                    En nuestro hotel, nos dedicamos a ofrecer una experiencia única de confort y calidez. 
-                    Con un enfoque en la atención personalizada y el diseño exclusivo, nuestras instalaciones 
-                    están pensadas para satisfacer las necesidades de nuestros huéspedes más exigentes.
-                </p>
-                <button class="btn-learn-more">Conoce más</button>
-            </section>
-        
-            <!-- Imagen destacada -->
-            <section class="about-image">
-                <img src="{{ url_for('static', filename='images/indiva.jpg') }}" alt="habejemplo">
-            </section>
-        </div>
-        
-        <!-- Adicionales -->
-        <div class="about-features">
-            <div class="feature">
-                <h2>Habitaciones e Interiores</h2>
-                <p>Excelente se encuentran más de 500 Opiniones</p>
-                <img src="{{ url_for('static', filename='images/hab.jpg') }}" alt="interior">
-                <div class="link">
-                    <a href="/habitaciones">Detalles</a>
-                </div>
-            </div>
-            <div class="feature">
-                <h2>Spa</h2>
-                <p>Relájate en un mundo de lujo y tranquilidad.</p>
-                <img src="{{ url_for('static', filename='images/spa.jpg') }}" alt="spa">
-                <div class="link">
-                    <a href="/spa">Detalles</a>
-                </div>
-            </div>
-            <div class="feature">
-                <h2>Lounge Bar</h2>
-                <p>Disfruta de momentos exclusivos de estilo y relajación.</p>
-                <img src="{{ url_for('static', filename='images/lbar.jpg') }}" alt="bar">
-                <div class="link">
-                    <a href="/bar">Detalles</a>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div>
-            <div class="subscribe-container">
-                <aside class="sidebar">
-                    <ul>
-                        <li>Inicio</li>
-                        <li>Servicios</li>
-                        <li>Nosotros</li>
-                        <li>Habitaciones</li>
-                        <li>Contacto</li>
-                    </ul>
-                    <div class="social-media">
-                        <img src="{{ url_for('static', filename='images/Facebook.png') }}" alt="fb">
-                        <img src="{{ url_for('static', filename='images/Youtube.png') }}" alt="yt">
-                        <img src="{{ url_for('static', filename='images/Whatsapp.png') }}" alt="whats">
-                    </div>
-                </aside>
-        
-                <section class="subscribe-section">
-                    <h1>Suscríbete</h1>
-                    <p>Disfruta de recibir notificaciones de descuentos y promociones especiales en nuestras habitaciones y servicios.</p>
-                    <form method="POST" action="/subscribe">
-                        <input type="email" name="email" placeholder="Ingresa tu correo" required>
-                        <button type="submit">Suscríbeme</button>
-                    </form>
-                </section>
-        
-                <aside class="sidebar right">
-                    <ul>
-                        <div class="link_pf">
-                            <a class="nav-link text-white" href="/preguntasfrecuentes">Preguntas Frecuentes</a>
-                        </div>
-                        <div class="link_html">
-                            <a class="nav-link text-white" href="/reglasdelhotel">Reglas del Hotel</a>
-                        </div>
-                        <div class="link_html">
-                            <a class="nav-link text-white" href="/ubicaciondelhotel">Ubicación</a>
-                        </div>
-                        <a class="nav-link text-white" href="/admin">Admindashboard</a>
-                    </ul>
-                </aside>
-            </div>
-        </div>
-    </main>
 </body>
 </html>
