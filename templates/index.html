@@ -12,7 +12,6 @@
 </head>
 <body class="font-[Rubik] bg-gray-50 text-gray-800">
 
-    <!-- Header -->
     <header class="flex items-center justify-between p-4 bg-[#121212] shadow-md">
         <div class="flex items-center gap-2">
             <img src="{{ url_for('static', filename='images/logo_hotel_malinche.png') }}" alt="Hotel El Malinche" class="w-12 h-12">
@@ -31,12 +30,10 @@
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="w-full">
         <img src="{{ url_for('static', filename='images/recepcion_hotel_malinche.png') }}" alt="lobby" class="w-full h-[800px] object-cover">
     </section>
 
-    <!-- Íconos -->
     <section class="flex justify-center gap-6 my-8">
         <img src="{{ url_for('static', filename='images/bebidas.png') }}" alt="icon" class="w-16">
         <img src="{{ url_for('static', filename='images/servspa.png') }}" alt="icon" class="w-16">
@@ -44,7 +41,6 @@
         <img src="{{ url_for('static', filename='images/wifi.png') }}" alt="icon" class="w-16">
     </section>
 
-    <!-- ¿Por qué elegirnos? -->
     <section class="text-center px-6 py-12 bg-gray-100">
         <h1 class="text-3xl font-bold">¿Por qué <span class="text-[#8B3F41]">elegirnos?</span></h1>
         <p class="max-w-2xl mx-auto mt-4 text-gray-600">
@@ -70,25 +66,52 @@
         </div>
     </section>
 
-    <!-- Habitaciones -->
     <section class="px-6 py-12">
         <h1 class="text-center text-3xl font-bold">Nuestras <span class="text-[#8B3F41]">Habitaciones</span></h1>
         <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6 mt-10">
-            <!-- Card -->
             <div class="bg-white shadow-md rounded-xl overflow-hidden">
-                <img src="{{ url_for('static', filename='images/suitep.jpeg') }}" alt="Suite" class="h-40 w-full object-cover">
+                <img src="{{ url_for('static', filename='images/suite.jpg') }}" alt="Suite" class="h-40 w-full object-cover">
                 <div class="p-4">
                     <h3 class="text-lg font-bold">Suite</h3>
                     <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
                     <a href="/habitaciones/suite" class="text-[#8B3F41] hover:underline">Detalles</a>
                 </div>
             </div>
-
-            <!-- Repetir para Pareja, Individual, Familiar, Doble -->
+                <div class="bg-white shadow-md rounded-xl overflow-hidden">
+                <img src="{{ url_for('static', filename='images/cabana.jpg') }}" alt="Suite" class="h-40 w-full object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">Cabaña</h3>
+                    <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
+                    <a href="/habitaciones/cabaña" class="text-[#8B3F41] hover:underline">Detalles</a>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-xl overflow-hidden">
+                <img src="{{ url_for('static', filename='images/villa.jpg') }}" alt="Suite" class="h-40 w-full object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">Villa</h3>
+                    <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
+                    <a href="/habitaciones/villa" class="text-[#8B3F41] hover:underline">Detalles</a>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-xl overflow-hidden">
+                <img src="{{ url_for('static', filename='images/familiar.jpg') }}" alt="Suite" class="h-40 w-full object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">Familiar</h3>
+                    <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
+                    <a href="/habitaciones/familiar" class="text-[#8B3F41] hover:underline">Detalles</a>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-xl overflow-hidden">
+                <img src="{{ url_for('static', filename='images/doble.jpg') }}" alt="Suite" class="h-40 w-full object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">Doble</h3>
+                    <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
+                    <a href="/habitaciones/doble" class="text-[#8B3F41] hover:underline">Detalles</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Acerca de nosotros -->
     <section class="px-6 py-12 bg-gray-100 flex flex-col md:flex-row items-center gap-8">
         <div class="md:w-1/2">
             <h1 class="text-3xl font-bold">Acerca de Nosotros</h1>
@@ -97,23 +120,26 @@
             </p>
             <button class="mt-6 bg-[#8B3F41] text-white px-6 py-2 rounded-lg hover:bg-[#4E342E]">Conoce más</button>
         </div>
-        <div class="md:w-1/2">
-            <img src="{{ url_for('static', filename='images/indiva.jpg') }}" alt="Nosotros" class="rounded-xl shadow-lg">
-        </div>
+        <section class="map">
+            <h2>Mapa de Ubicación</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31103.565820875385!2d-85.92605858157577!3d12.975323109843572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f724830f9561d2f%3A0x1793a46db7ccdb99!2sMatagalpa!5e0!3m2!1ses-419!2sni!4v1759872233683!5m2!1ses-419!2sni" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
     </section>
 
-    <!-- Suscripción -->
     <section class="px-6 py-12 text-center bg-white">
-        <h1 class="text-2xl font-bold">Suscríbete</h1>
-        <p class="text-gray-600 mt-2">Recibe notificaciones de descuentos y promociones.</p>
-        <form method="POST" action="/subscribe" class="mt-4 flex justify-center gap-2">
-            <input type="email" name="email" placeholder="Ingresa tu correo" required
-                   class="border px-4 py-2 rounded-lg w-64 focus:ring focus:ring-blue-300">
-            <button type="submit" class="bg-[#8B3F41] text-white px-6 py-2 rounded-lg hover:bg-[#4E342E]">
-                Suscríbeme
-            </button>
-        </form>
-    </section>
+    <h1 class="text-2xl font-bold">Suscríbete</h1>
+    <p class="text-gray-600 mt-2">Recibe notificaciones de descuentos y promociones.</p>
+    <form method="POST" action="/subscribe" class="mt-4 flex justify-center gap-2">
+      <input type="email" name="email" placeholder="Ingresa tu correo" required
+             class="border px-4 py-2 rounded-lg w-64 focus:ring focus:ring-blue-300">
+      <button type="submit" class="bg-[#8B3F41] text-white px-6 py-2 rounded-lg hover:bg-[#4E342E]">
+        Suscríbeme
+      </button>
+    </form>
+  </section>
 
+  <footer class="text-center py-6 bg-[#8B3F41] text-white">
+    © 2025 Hotel El Malinche. Todos los derechos reservados.
+  </footer>
 </body>
 </html>
