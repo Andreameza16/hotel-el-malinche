@@ -31,7 +31,7 @@
     </header>
 
     <section class="w-full">
-        <img src="{{ url_for('static', filename='images/recepcion_hotel_malinche.png') }}" alt="lobby" class="w-full h-[800px] object-cover">
+        <img src="{{ url_for('static', filename='images/recepcion_hotel_malinche.png') }}" alt="lobby" class="w-full h-[700px] object-cover">
     </section>
 
     <section class="flex justify-center gap-6 my-8">
@@ -44,24 +44,25 @@
     <section class="text-center px-6 py-12 bg-gray-100">
         <h1 class="text-3xl font-bold">¿Por qué <span class="text-[#8B3F41]">elegirnos?</span></h1>
         <p class="max-w-2xl mx-auto mt-4 text-gray-600">
-            Porque cada detalle está pensado para ti. En Hotel El Malinche, combinamos lujo, comodidad y un servicio excepcional.
+            El Hotel El Malinche te ofrece una estancia confortable y auténtica, 
+            en plena conexión con la naturaleza, donde disfrutarás de tranquilidad rural, servicios modernos y atención personalizada.
         </p>
 
         <div class="grid md:grid-cols-3 gap-8 mt-10">
-            <div class="bg-white shadow-lg p-6 rounded-xl">
+            <div class="bg-white shadow-lg p-6 rounded-xl transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
                 <div class="text-4xl font-bold text-[#8B3F41]">1</div>
-                <h2 class="text-xl font-semibold mt-2">Vive el lujo</h2>
-                <p class="text-gray-500">Instalaciones de primer nivel y un servicio dedicado a superar tus expectativas.</p>
+                <h2 class="text-xl font-semibold mt-2">Entorno natural incomparable</h2>
+                <p class="text-gray-500">Disfruta de la tranquilidad del bosque y la serenidad de la laguna en un ambiente que te conecta con la naturaleza y renueva tus sentidos.</p>
             </div>
-            <div class="bg-white shadow-lg p-6 rounded-xl">
+            <div class="bg-white shadow-lg p-6 rounded-xl transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
                 <div class="text-4xl font-bold text-[#8B3F41]">2</div>
-                <h2 class="text-xl font-semibold mt-2">Momentos inolvidables</h2>
-                <p class="text-gray-500">Encuentra el equilibrio ideal entre descanso y experiencias únicas.</p>
+                <h2 class="text-xl font-semibold mt-2">Comodidad con esencia local</h2>
+                <p class="text-gray-500">Nuestras habitaciones combinan el confort moderno con materiales naturales y detalles que reflejan la calidez de Matagalpa.</p>
             </div>
-            <div class="bg-white shadow-lg p-6 rounded-xl">
+            <div class="bg-white shadow-lg p-6 rounded-xl transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
                 <div class="text-4xl font-bold text-[#8B3F41]">3</div>
-                <h2 class="text-xl font-semibold mt-2">Tu descanso ideal</h2>
-                <p class="text-gray-500">Con solo una reserva, descubre un mundo de confort y tranquilidad.</p>
+                <h2 class="text-xl font-semibold mt-2">Experiencias únicas para todos</h2>
+                <p class="text-gray-500">Desde caminatas por senderos y paseos en la laguna hasta momentos de descanso en nuestras cabañas y villas, en El Malinche encontrarás el equilibrio perfecto entre aventura y relajación.</p>
             </div>
         </div>
     </section>
@@ -69,43 +70,59 @@
     <section class="px-6 py-12">
         <h1 class="text-center text-3xl font-bold">Nuestras <span class="text-[#8B3F41]">Habitaciones</span></h1>
         <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6 mt-10">
-            <div class="bg-white shadow-md rounded-xl overflow-hidden">
+            <div class="bg-white shadow-md rounded-xl overflow-hidden transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
                 <img src="{{ url_for('static', filename='images/suite.jpg') }}" alt="Suite" class="h-40 w-full object-cover">
                 <div class="p-4">
                     <h3 class="text-lg font-bold">Suite</h3>
-                    <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
+                    <p class="text-gray-500">Parejas, turistas o viajeros ejecutivos que buscan un espacio privado, elegante y funcional con todas las comodidades.</p>
                     <a href="/habitaciones/suite" class="text-[#8B3F41] hover:underline">Detalles</a>
                 </div>
             </div>
-                <div class="bg-white shadow-md rounded-xl overflow-hidden">
+                <div class="bg-white shadow-md rounded-xl overflow-hidden transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
                 <img src="{{ url_for('static', filename='images/cabana.jpg') }}" alt="Suite" class="h-40 w-full object-cover">
                 <div class="p-4">
                     <h3 class="text-lg font-bold">Cabaña</h3>
-                    <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
-                    <a href="/habitaciones/cabaña" class="text-[#8B3F41] hover:underline">Detalles</a>
+                    <p class="text-gray-500">Parejas o viajeros que desean una experiencia tranquila, auténtica y cercana al entorno natural, sin renunciar al confort y al estilo.</p>
+                    <a href="/habitaciones/cabañas" class="text-[#8B3F41] hover:underline">Detalles</a>
                 </div>
             </div>
-            <div class="bg-white shadow-md rounded-xl overflow-hidden">
+            <div class="bg-white shadow-md rounded-xl overflow-hidden transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+                <img src="{{ url_for('static', filename='images/habindividual.png') }}" alt="Suite" class="h-40 w-full object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">Individual</h3>
+                    <p class="text-gray-500">Espacio cómodo y privado diseñado especialmente para una sola persona.</p>
+                    <a href="/habitaciones/individual" class="text-[#8B3F41] hover:underline">Detalles</a>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-xl overflow-hidden transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+                <img src="{{ url_for('static', filename='images/habeconomica.png') }}" alt="Suite" class="h-40 w-full object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">Económica</h3>
+                    <p class="text-gray-500">Opción práctica y confortable a un precio accesible, sin sacrificar los servicios esenciales. </p>
+                    <a href="/habitaciones/economica" class="text-[#8B3F41] hover:underline">Detalles</a>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-xl overflow-hidden transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
                 <img src="{{ url_for('static', filename='images/villa.jpg') }}" alt="Suite" class="h-40 w-full object-cover">
                 <div class="p-4">
                     <h3 class="text-lg font-bold">Villa</h3>
-                    <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
+                    <p class="text-gray-500">Familias grandes, grupos de amigos o parejas que desean una experiencia más privada en un entorno natural y relajante.</p>
                     <a href="/habitaciones/villa" class="text-[#8B3F41] hover:underline">Detalles</a>
                 </div>
             </div>
-            <div class="bg-white shadow-md rounded-xl overflow-hidden">
+            <div class="bg-white shadow-md rounded-xl overflow-hidden transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
                 <img src="{{ url_for('static', filename='images/familiar.jpg') }}" alt="Suite" class="h-40 w-full object-cover">
                 <div class="p-4">
                     <h3 class="text-lg font-bold">Familiar</h3>
-                    <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
+                    <p class="text-gray-500">Familias o grupos de amigos que buscan un alojamiento amplio, cómodo y bien equipado.</p>
                     <a href="/habitaciones/familiar" class="text-[#8B3F41] hover:underline">Detalles</a>
                 </div>
             </div>
-            <div class="bg-white shadow-md rounded-xl overflow-hidden">
+            <div class="bg-white shadow-md rounded-xl overflow-hidden transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
                 <img src="{{ url_for('static', filename='images/doble.jpg') }}" alt="Suite" class="h-40 w-full object-cover">
                 <div class="p-4">
                     <h3 class="text-lg font-bold">Doble</h3>
-                    <p class="text-gray-500">Espacio elegante con dormitorio, sala y detalles de lujo.</p>
+                    <p class="text-gray-500">Parejas, amigos o viajeros que buscan comodidad, limpieza y conexión con el entorno natural.</p>
                     <a href="/habitaciones/doble" class="text-[#8B3F41] hover:underline">Detalles</a>
                 </div>
             </div>
@@ -118,10 +135,10 @@
             <p class="mt-4 text-gray-600">
                 En nuestro hotel, nos dedicamos a ofrecer una experiencia única de confort y calidez.
             </p>
-            <button class="mt-6 bg-[#8B3F41] text-white px-6 py-2 rounded-lg hover:bg-[#4E342E]">Conoce más</button>
+            <button class="mt-6 bg-[#8B3F41] text-white px-6 py-2 rounded-lg hover:bg-[#4E342E] transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">Conoce más</button>
         </div>
-        <section class="map">
-            <h2>Mapa de Ubicación</h2>
+        <section class="map transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+            <h2>Mapa</h2>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31103.565820875385!2d-85.92605858157577!3d12.975323109843572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f724830f9561d2f%3A0x1793a46db7ccdb99!2sMatagalpa!5e0!3m2!1ses-419!2sni!4v1759872233683!5m2!1ses-419!2sni" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
     </section>
