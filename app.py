@@ -100,6 +100,8 @@ def capture_order():
     nombre = data.get("nombre")
     cedula = data.get("cedula")
     correo = data.get("correo")
+    checkin = data.get("checkin")
+    checkout = data.get("checkout")
 
     # Obtener token de nuevo
     auth_response = requests.post(
@@ -123,35 +125,35 @@ def capture_order():
         # Enviar correo
         try:
             msg = Message(
-                subject="Confirmación de Reserva - Hotel El Malinche 🌿",
+                subject="🌿 Confirmación de Reserva - Hotel El Malinche",
                 recipients=[correo],
                 body=f"""
 Estimado/a {nombre},
 
-Tu pago ha sido completado exitosamente en Hotel El Malinche.
+Tu pago ha sido completado exitosamente en Hotel El Malinche 🌿
 
 🧾 Detalles de la reserva:
 - Cédula: {cedula}
-- Habitación: {result['purchase_units'][0]['description']}
-- Transacción: {result['id']}
+- ID Transacción: {result['id']}
+- Habitación: {data.get("descripcion")}
+- Check-In: {checkin}
+- Check-Out: {checkout}
+- Monto: {result['purchase_units'][0]['payments']['captures'][0]['amount']['value']} USD
 - Estado: {result['status']}
-- Monto: {result['purchase_units'][0]['amount']['value']} USD
 
 Gracias por confiar en nosotros 🌿
 Te esperamos pronto en Matagalpa.
 """
             )
             mail.send(msg)
-            flash("Pago completado y correo enviado exitosamente ✅", "success")
+            print("📧 Correo enviado exitosamente a", correo)
+            return jsonify({"status": "COMPLETED", "message": "Correo enviado"})
         except Exception as e:
-            print("Error enviando correo:", e)
-            flash("Pago completado, pero ocurrió un error al enviar el correo.", "error")
-
-        return jsonify({"status": "COMPLETED"})
+            print("❌ Error enviando correo:", e)
+            return jsonify({"status": "COMPLETED", "message": "Pago completado, pero error enviando correo"})
     else:
-        print("Error en respuesta PayPal:", result)
-        flash("Error al procesar el pago.", "error")
-        return jsonify({"status": "ERROR"}), 500
+        print("❌ Error en respuesta PayPal:", response.text)
+        return jsonify({"status": "ERROR", "message": "Error al procesar el pago"}), 500
 
 
 
