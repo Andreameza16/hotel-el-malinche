@@ -152,7 +152,7 @@ Te esperamos pronto en Matagalpa.
             print("❌ Error enviando correo:", e)
             return jsonify({"status": "COMPLETED", "message": "Pago completado, pero error enviando correo"})
     else:
-        print("❌ Error en respuesta PayPal:", response.text)
+        print("❌ Error en respuesta PayPal:", auth_response.text)
         return jsonify({"status": "ERROR", "message": "Error al procesar el pago"}), 500
 
 
