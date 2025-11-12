@@ -61,39 +61,36 @@ def create_order():
     monto = data.get("monto")
     descripcion = data.get("descripcion")
 
-    # Validar datos
     if not all([nombre, cedula, correo, monto, descripcion]):
         return jsonify({"error": "Faltan datos del cliente"}), 400
 
+    # Obtener token de acceso PayPal
+    auth_response = requests.post(
+        f"{PAYPAL_API}/v1/oauth2/token",
+        headers={"Accept": "application/json", "Accept-Language": "en_US"},
+        data={"grant_type": "client_credentials"},
+        auth=(PAYPAL_CLIENT_ID, PAYPAL_SECRET)
+    )
+
+    access_token = auth_response.json().get("access_token")
+    if not access_token:
+        return jsonify({"error": "No se pudo obtener token de PayPal"}), 500
+
+    # Crear orden
     headers = {
         "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token}"
     }
-
     payload = {
         "intent": "CAPTURE",
         "purchase_units": [{
-            "amount": {
-                "currency_code": "USD",
-                "value": str(monto)
-            },
+            "amount": {"currency_code": "USD", "value": str(monto)},
             "description": descripcion
-        }],
+        }]
     }
 
-    # Solicitud
-    response = requests.post(
-        f"{PAYPAL_API}/v2/checkout/orders",
-        auth=(PAYPAL_CLIENT_ID, PAYPAL_SECRET),
-        headers=headers,
-        json=payload
-    )
-
-    # Deteccion de errores
-    if response.status_code not in [200, 201]:
-        print("⚠️ Error PayPal:", response.text)
-        return jsonify({"error": "Error al crear la orden en PayPal"}), 400
-
-    return jsonify(response.json())
+    r = requests.post(f"{PAYPAL_API}/v2/checkout/orders", headers=headers, json=payload)
+    return jsonify(r.json())
 
 
 @app.route("/capture-order", methods=["POST"])
@@ -103,53 +100,59 @@ def capture_order():
     nombre = data.get("nombre")
     cedula = data.get("cedula")
     correo = data.get("correo")
-    checkin = data.get("checkin")
-    checkout = data.get("checkout")
 
-
-    # Capturar el pago
-    response = requests.post(
-        f"{PAYPAL_API}/v2/checkout/orders/{order_id}/capture",
-        auth=(PAYPAL_CLIENT_ID, PAYPAL_SECRET),
-        headers={"Content-Type": "application/json"},
+    # Obtener token de nuevo
+    auth_response = requests.post(
+        f"{PAYPAL_API}/v1/oauth2/token",
+        headers={"Accept": "application/json", "Accept-Language": "en_US"},
+        data={"grant_type": "client_credentials"},
+        auth=(PAYPAL_CLIENT_ID, PAYPAL_SECRET)
     )
 
-    print("📦 Respuesta de PayPal:", response.text)
+    access_token = auth_response.json().get("access_token")
 
-    if response.status_code in [200, 201]:
-        result = response.json()
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token}"
+    }
 
+    r = requests.post(f"{PAYPAL_API}/v2/checkout/orders/{order_id}/capture", headers=headers)
+    result = r.json()
+
+    if r.status_code in [200, 201]:
+        # Enviar correo
         try:
             msg = Message(
-                subject="🌿 Confirmación de Reserva - Hotel El Malinche",
+                subject="Confirmación de Reserva - Hotel El Malinche 🌿",
                 recipients=[correo],
                 body=f"""
 Estimado/a {nombre},
 
-Tu pago ha sido completado exitosamente en Hotel El Malinche 🌿
+Tu pago ha sido completado exitosamente en Hotel El Malinche.
 
 🧾 Detalles de la reserva:
 - Cédula: {cedula}
-- ID Transacción: {result['id']}
-- Habitación: {data.get("descripcion")}
-- Check-In: {checkin}
-- Check-Out: {checkout}
-- Monto: {result['purchase_units'][0]['payments']['captures'][0]['amount']['value']} USD
+- Habitación: {result['purchase_units'][0]['description']}
+- Transacción: {result['id']}
 - Estado: {result['status']}
+- Monto: {result['purchase_units'][0]['amount']['value']} USD
 
 Gracias por confiar en nosotros 🌿
 Te esperamos pronto en Matagalpa.
 """
             )
             mail.send(msg)
-            print("📧 Correo enviado exitosamente a", correo)
-            return jsonify({"status": "COMPLETED", "message": "Correo enviado"})
+            flash("Pago completado y correo enviado exitosamente ✅", "success")
         except Exception as e:
-            print("❌ Error enviando correo:", e)
-            return jsonify({"status": "COMPLETED", "message": "Pago completado, pero error enviando correo"})
+            print("Error enviando correo:", e)
+            flash("Pago completado, pero ocurrió un error al enviar el correo.", "error")
+
+        return jsonify({"status": "COMPLETED"})
     else:
-        print("❌ Error en respuesta PayPal:", response.text)
-        return jsonify({"status": "ERROR", "message": "Error al procesar el pago"}), 500
+        print("Error en respuesta PayPal:", result)
+        flash("Error al procesar el pago.", "error")
+        return jsonify({"status": "ERROR"}), 500
+
 
 
 # Ruta principal
