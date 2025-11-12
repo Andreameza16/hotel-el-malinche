@@ -14,7 +14,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 
 # Configuración de la base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:1234@localhost/HOTEL_EL_MALINCHEBD'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  
 
 # Inicializar SQLAlchemy
